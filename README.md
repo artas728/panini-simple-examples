@@ -10,4 +10,7 @@ How to run examples:
    
    `docker run -p 4222:4222 -ti nats:latest`
 
-3. Follow by readme files in example directories
+3. Install panini
+
+   `pip install panini`
+4. Follow by readme files in example directories

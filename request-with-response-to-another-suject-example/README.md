@@ -1,21 +1,17 @@
 How to run services:
 
-1. Install & run NATS:
+1. Follow by readme here:
+    
+    https://github.com/artas728/panini-simple-examples/blob/master/README.md
 
-    Instruction here: https://docs.nats.io/nats-server/installation
-
-2. Install panini
-
-   `pip install panini`
-
-3. Run process_request
+2. Run process_request
 
    `python3 process_request2.py`
 
-4. Run process_response
+3. Run process_response
 
    `python3 process_response.py`
 
-5. Run send_request
+4. Run send_request
 
    `python3 send_request.py`
