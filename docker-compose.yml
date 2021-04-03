@@ -1,0 +1,35 @@
+version: '3.6'
+
+networks:
+  internet:
+    name: "internet"
+    driver: bridge
+  no-internet:
+    name: "no-internet"
+    internal: true
+    driver: bridge
+
+
+services:
+  nats-server:
+    command:
+      - "-p"
+      - "4222"
+      - "-m"
+      - "8222"
+    ports:
+      - 4222:4222
+      - 8222:8222
+    image: nats:latest
+    container_name: nats-server
+    networks:
+      - no-internet
+      - internet
+    deploy:
+      resources:
+        limits:
+          memory: 500M
+        reservations:
+          memory: 200M
+    restart: always
+
