@@ -1,10 +1,10 @@
 from panini import app as panini_app
+from models import AircraftLocation
 
 app = panini_app.App(
     service_name="publisher",
     host="127.0.0.1",
     port=4222,
-    app_strategy="asyncio",
 )
 
 
@@ -70,10 +70,11 @@ def get_some_aircraft_location_update():
             }
 }
 
-@app.timer_task(interval=1)
+@app.task(interval=1)
 async def publish():
-    message = get_some_aircraft_location_update()
-    await app.publish(subject='aircraft_live_location.us.east.atlanta.FL422', message=message)
+    message_dict = get_some_aircraft_location_update()
+    message_model = AircraftLocation(**message_dict)
+    await app.publish(subject='aircraft_live_location.us.east.atlanta.FL422', message=message_model)
 
 if __name__ == "__main__":
     app.start()

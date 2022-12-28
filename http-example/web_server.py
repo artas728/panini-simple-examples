@@ -8,9 +8,8 @@ app = panini_app.App(
     service_name="async_web_server",
     host="127.0.0.1",
     port=4222,
-    app_strategy="asyncio",
-    web_server=True,
 )
+app.setup_web_server(port=4999)
 
 log = app.logger
 
